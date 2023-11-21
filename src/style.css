@@ -1,0 +1,152 @@
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color: #222;
+	background-color: #ffffff;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+}
+
+#app {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+a {
+	display: flex;
+	justify-content: center;
+}
+
+img {
+	margin-bottom: 1.5rem;
+}
+
+img:hover {
+	filter: drop-shadow(0 0 2em #673ab8aa);
+}
+
+section {
+	margin-top: 1rem;
+}
+
+@media (max-width: 639px) {
+	#app {
+		margin: 2rem;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color: #ccc;
+		background-color: #1a1a1a;
+	}
+}
+
+
+form {
+	background-color: #ccc;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	border-radius: 4px;
+	padding: 1em;
+	gap: 10px;
+}
+
+label {
+	display: flex;
+	justify-content: space-between;
+}
+
+input {
+	width: auto;
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	display: block;
+}
+
+button {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: max-content;
+	box-sizing: border-box;
+
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.invlaid {
+	color: red;
+}
+
+.simple-button {
+	background-color: #ccc;
+	color: black;
+	border: none;
+	border-radius: 4px;
+	text-decoration: underline;
+}
+
+.simple-button:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.banner {
+	background-color: green;
+	color: white;
+	padding: 1em;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 12px;
+	box-sizing: border-box;
+}
+
+.password-strength {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.password-strength__bar {
+	height: 5px;
+	margin-top: 2px;
+	border-radius: 4px;
+	background-color: #ccc;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.password-strength__bar--low {
+	background-color: red;
+}
+
+.password-strength__bar--medium {
+	background-color: orange;
+}
+
+.password-strength__bar--strong {
+	background-color: green;
+}
+
+.password-strength__bar--default {
+	background-color: darkgray;
+}

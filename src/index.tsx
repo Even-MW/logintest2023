@@ -27,7 +27,7 @@ export function App() {
 		setTimeout(() => {
 			localStorage.removeItem('justRegistered')
 			setJustRegisteredState(false)
-		}, 5000)
+		}, 2000)
 	}, [setJustRegisteredState, justRegistered])
 
 	function handleRegister() {
@@ -45,7 +45,7 @@ export function App() {
 				<img src={test} style={{ fill: 'white' }} alt="Preact logo" height="160" width="160" />
 			</a>
 			<h1>Tester brukerhåndtering med Jest & Playwright</h1>
-			{justRegisteredState && (<div className="banner">Registrering fullført, logg inn under!</div>)}
+			{justRegisteredState && (<div className="banner" role="banner">Registrering fullført, logg inn under!</div>)}
 			<section>
 				{showRegister ? (
 					<Register setShowRegister={handleRegister} />

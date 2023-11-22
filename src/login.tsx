@@ -44,6 +44,12 @@ export default function Login({ setShowRegister }: ILoginProps) {
             const users: any = JSON.parse(localStorage.getItem('users'))
             const user = users.find(user => user.email === emailInput.value)
 
+            if (!user) {
+                setValidPassword(false)
+                setValidEmail(false)
+                return
+            }
+
             if (emailInput.value === user.email && passwordInput.value === user.password) {
                 setLoggedIn(true)
                 localStorage.setItem('loggedInUser', JSON.stringify(user))
@@ -75,7 +81,7 @@ export default function Login({ setShowRegister }: ILoginProps) {
     if (loggedIn) {
         return (
             <div>
-                <h2>Logget inn med, {loggedInUser?.email}</h2>
+                <h2 data-testid="loggedInUser">Logget inn med, {loggedInUser?.email}</h2>
                 <button onClick={logout}>Logg ut</button>
             </div>
         )
@@ -89,12 +95,12 @@ export default function Login({ setShowRegister }: ILoginProps) {
                     <span>Epost</span>
                     {loginState.email.length > 0 && (
                         <>
-                            {!validEmail && <span className="invalid">Ugyldig epost, prøv igjen.</span>}
+                            {!validEmail && <div className="invalid" role="alert">Feil passord eller epost</div>}
                             {!validWhileWriting ? <MdErrorOutline /> : <MdOutlineCheck />}
                         </>
                     )}
                 </label>
-                <input type="email" name="email" value={loginState.email} onInput={onLoginInput} pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" required />
+                <input type="email" name="email" value={loginState.email} onInput={onLoginInput} required />
             </div>
             <div>
                 <label>

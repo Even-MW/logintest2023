@@ -1,6 +1,4 @@
-// require isValidEmail from functions.tsx
-// ts ignore this file
-import { isValidEmail, isLongEnoughPassword, isValidPassword, getUsersFromLocalStorage, registerUser, loginUser, checkPasswordStrength } from './functions'
+import { isValidEmail, isLongEnoughPassword, isValidPassword, getUsersFromLocalStorage, registerUser, loginUser, checkPasswordStrength, getLoggedInUserEmail } from './functions'
 
 test('isValidEmail returns true for valid emails', () => {
     expect(isValidEmail('even@test.no')).toBe(true);
@@ -49,7 +47,6 @@ test('loginUser returns true if user exists', () => {
     expect(loginUser('even@jest.no', 'Test123@')).toBe(true);
 });
 
-
 test('loginUser returns false if user does not exist', () => {
     window.localStorage.clear();
     window.localStorage.setItem('users', JSON.stringify([{ email: 'even@jest.no', password: 'Test123@' }]));
@@ -65,6 +62,11 @@ test('checkPasswordStrength returns medium for medium passwords', () => {
 
 test('checkPasswordStrength returns high for strong passwords', () => {
     expect(checkPasswordStrength('12345678Aa@')).toBe('high');
+});
+
+test('getLoggedInUserEmail returns null if no user is logged in', () => {
+    window.localStorage.clear();
+    expect(getLoggedInUserEmail()).toBe(null);
 });
 
 

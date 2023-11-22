@@ -17,7 +17,7 @@ export default function Register({ setShowRegister }: IRegisterProps) {
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [validWhileWriting, setValidWhileWriting] = useState(true);
     const [validPasswordWhileWriting, setValidPasswordWhileWriting] = useState(true);
-    const [passwordStrength, setPasswordStrength] = useState<'low' | 'medium' | 'high'>('low');
+    const [passwordStrength, setPasswordStrength] = useState<any>('low');
 
     const register = (event) => {
         event.preventDefault();
@@ -117,18 +117,26 @@ export default function Register({ setShowRegister }: IRegisterProps) {
 
                 <input type="password" name="password" value={registerState.password} onInput={onRegisterInput} required />
                 {registerState.password.length > 0 && (
-                    <div className="password-strength__bar">
-                        <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--low' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--medium' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
-                        <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--medium' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
-                        <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
-                    </div>
+                    <>
+                        <div className="password-strength__bar" role="progressbar">
+                            <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--low' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--medium' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
+                            <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--medium' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
+                            <div className={`password-strength__bar ${passwordStrength === 'low' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'medium' ? 'password-strength__bar--default' : ''} ${passwordStrength === 'high' ? 'password-strength__bar--strong' : ''}`}></div>
+                        </div>
+                        <div className="password-strength__text">
+                            {passwordStrength === 'low' && 'Svak'}
+                            {passwordStrength === 'medium' && 'Middels'}
+                            {passwordStrength === 'high' && 'Sterk'}
+                        </div>
+                    </>
+
                 )}
 
             </div>
             <div>
                 <label>
                     <span>Gjenta passord</span>
-                    {!passwordMatch && <span className="invalid">Passordet stemmer ikke med det over</span>}
+                    {!passwordMatch && <div role="alert" className="invalid">Passordene må være like</div>}
                 </label>
                 <input type="verifypassword" name="verifypassword" value={registerState.verifypassword} onInput={onRegisterInput} required />
             </div>

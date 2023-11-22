@@ -3,8 +3,8 @@
 	line-height: 1.5;
 	font-weight: 400;
 
-	color: #222;
-	background-color: #ffffff;
+	color: #ccc;
+	background-color: #1a1a1a;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -48,12 +48,6 @@ section {
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		color: #ccc;
-		background-color: #1a1a1a;
-	}
-}
 
 
 form {
@@ -149,4 +143,15 @@ button:hover {
 
 .password-strength__bar--default {
 	background-color: darkgray;
+}
+
+.password-strength__text {
+	font-size: 12px;
+	font-style: italic;
+	margin-top: 4px;
+}
+
+.out-of-bounds {
+	position: absolute;
+	left: -100vw;
 }

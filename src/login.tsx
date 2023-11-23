@@ -1,4 +1,4 @@
-import { isValidEmail, isLongEnoughPassword, isValidPassword } from './functions';
+import { isValidEmail, isLongEnoughPassword, isValidPassword, logoutUser } from './functions';
 import { useState } from 'preact/hooks';
 import { MdErrorOutline, MdOutlineCheck } from "react-icons/md";
 
@@ -75,7 +75,7 @@ export default function Login({ setShowRegister }: ILoginProps) {
 
     const logout = () => {
         setLoggedIn(false)
-        localStorage.removeItem('loggedInUser')
+        logoutUser()
     }
 
     if (loggedIn) {

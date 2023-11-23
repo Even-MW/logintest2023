@@ -117,5 +117,3 @@ test("That each step of the progressbar is the correct color", async ({ page }) 
   await expect(page.getByRole('progressbar').locator('div').nth(2)).toHaveClass('password-strength__bar   password-strength__bar--strong');
 });
 
-
-

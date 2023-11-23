@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { isValidEmail, isLongEnoughPassword, isValidPassword, checkPasswordStrength } from './functions';
+import { isValidEmail, isValidPassword, checkPasswordStrength } from './functions';
 import { MdErrorOutline, MdOutlineCheck } from "react-icons/md";
 
 export interface IRegisterProps {
@@ -61,8 +61,6 @@ export default function Register({ setShowRegister }: IRegisterProps) {
                 localStorage.setItem('users', JSON.stringify(users))
             }
 
-
-
             setShowRegister()
         }
     }
@@ -86,8 +84,6 @@ export default function Register({ setShowRegister }: IRegisterProps) {
             [name]: value
         }))
     }
-
-    console.log(passwordStrength)
 
     return (
         <form onSubmit={register}>

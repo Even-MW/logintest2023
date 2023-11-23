@@ -6,7 +6,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report"
   },
   "dependencies": {
     "preact": "^10.13.1",
